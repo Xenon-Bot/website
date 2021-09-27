@@ -4,8 +4,8 @@ import Link from "next/link";
 
 export default function TemplateCard({data}) {
     return (
-        <Link href={`/templates/${data.code}`} passHref>
-            <a className="group block bg-theme-darker rounded-lg flex flex-col transform hover:scale-102 transition-transform transition-300 group">
+        <Link href={`/templates/${data.id}`} passHref>
+            <a className="flex-auto group block bg-theme-darker rounded-lg flex flex-col transform hover:scale-102 transition-transform transition-300 group">
                 <div className="p-6 flex-grow">
                     <div className="mb-5">
                         <div className="text-xl mb-2">{data.name}</div>

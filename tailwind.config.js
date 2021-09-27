@@ -1,5 +1,5 @@
 module.exports = {
-    purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    purge: ['./layouts/**/*.{js,ts,jsx,tsx}', './pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {
@@ -39,10 +39,18 @@ module.exports = {
                 '256': '64rem',
                 '304': '76rem'
             },
-        },
+            scale: {
+                '102': '1.02'
+            }
+        }
     },
     variants: {
-        extend: {},
+        extend: {
+            display: ['group-hover'],
+            width: ['group-hover'],
+            padding: ['group-hover', 'hover'],
+            maxWidth: ['group-hover']
+        },
     },
     plugins: [],
 }

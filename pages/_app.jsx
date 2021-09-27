@@ -2,19 +2,32 @@ import '../styles/globals.css'
 import DefaultLayout from '../layouts/default'
 import {appWithTranslation} from 'next-i18next';
 import Head from 'next/head'
+import 'react-toastify/dist/ReactToastify.css';
+import {ToastContainer} from 'react-toastify';
+import {useEffect} from 'react'
 
 function MyApp({Component, pageProps}) {
     const getLayout = Component.getLayout || (
         page => <DefaultLayout>{page}</DefaultLayout>
     )
 
+    useEffect(() => {
+        document.querySelector("body").classList.add("bg-theme-darkest")
+    });
+
     return (
         <div>
             <Head>
                 <title>Xenon Bot</title>
-                <meta property="og:title" content="Xenon Bot" key="title" />
+                <meta property="og:title" content="Xenon Bot" key="og_title"/>
+                <meta property="og:description" key="og_description"
+                      content="Backup, archive, copy, clone or synchronize your discord server and take advantage of hundreds of free templates."/>
+                <meta property="og:site_name" content="xenon.bot" key="og_site_name"/>
+                <meta property="twitter:site" content="@xenon_bot"/>
+                <meta property="twitter:creator" content="@merlin_fuchs"/>
             </Head>
             {getLayout(<Component {...pageProps} />)}
+            <ToastContainer theme="colored"/>
         </div>
     )
 }

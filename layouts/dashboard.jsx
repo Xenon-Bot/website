@@ -1,11 +1,11 @@
-import {AuthProvider} from "../context/auth";
+import {TokenProvider} from "../context/token";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import Head from "next/head";
 
 export default function DashboardLayout({children}) {
     return (
-        <AuthProvider>
+        <TokenProvider>
             <Head>
                 <title>Xenon Bot - Dashboard</title>
             </Head>
@@ -15,6 +15,6 @@ export default function DashboardLayout({children}) {
                     {children}
                 </div>
             </div>
-        </AuthProvider>
+        </TokenProvider>
     )
 }

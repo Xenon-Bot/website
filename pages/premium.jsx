@@ -1,10 +1,10 @@
 import Head from "next/head";
 
-export default function Contact() {
+export default function Premium() {
     return (
         <div>
             <Head>
-                <title>Contact | Xenon Bot</title>
+                <title>Premium | Xenon Bot</title>
             </Head>
         </div>
     )

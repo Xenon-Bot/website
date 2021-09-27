@@ -1,0 +1,20 @@
+.previewRoles, .previewChannels {
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.previewRole {
+    border-radius: 1em;
+    padding: 2px 9px 2px 9px;
+    margin: 3px;
+    display: inline-block;
+}
+
+.previewRoleDot {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    padding-right: 3px;
+    border-radius: 50%;
+}
