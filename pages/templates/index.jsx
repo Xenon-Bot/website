@@ -11,9 +11,10 @@ export async function getStaticProps({locale}) {
     async function getTemplates(tags, language) {
         language = language ?? ''
         tags = (tags ?? []).join(',')
-        return await apiRequest({
+        const data = await apiRequest({
             path: `/templates?limit=12&tags=${tags}&language=${language}`
         }).then(resp => resp.json())
+        return data.templates
     }
 
     const data = await Promise.all([
@@ -26,7 +27,7 @@ export async function getStaticProps({locale}) {
 
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['templates'])),
+            ...(await serverSideTranslations(locale, ['templates', 'common'])),
             categories: [
                 {
                     name: 'Top Templates',

@@ -6,8 +6,9 @@ import useApi from "../../../hooks/api";
 import TemplateCard from "../../../components/templates/TemplateCard";
 import ReactLoading from "react-loading";
 import Head from "next/head";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
-export async function getServerSideProps({params, res}) {
+export async function getServerSideProps({params, res, locale}) {
     res.setHeader(
         'Cache-Control',
         'public, s-maxage=60, stale-while-revalidate=120'
@@ -25,6 +26,7 @@ export async function getServerSideProps({params, res}) {
 
     return {
         props: {
+            ...(await serverSideTranslations(locale, ['users', 'common'])),
             user: await resp.json()
         }
     }

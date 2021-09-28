@@ -5,26 +5,46 @@ import TemplateCard from "../../components/templates/TemplateCard";
 import useApi from "../../hooks/api";
 import {useRouter} from "next/router";
 import ReactLoading from 'react-loading';
+import {useEffect, useState} from "react";
+import apiRequest from "../../api";
+import {useToken} from "../../context/token";
 
 export async function getStaticProps({locale}) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['templates'])),
+            ...(await serverSideTranslations(locale, ['templates', 'common'])),
         },
     };
 }
 
+const PER_PAGE = 12
+
 export default function TemplateSearch() {
     const router = useRouter();
+
     const search = router.query['s'] ?? ''
     const tags = router.query['t'] ?? ''
     const language = router.query['l'] ?? ''
+    const order = router.query['o'] ?? ''
 
-    const {data, error} = useApi({
-        path: `/templates?limit=12&search=${search}&tags=${tags}&language=${language}`,
-        requiresToken: false,
-        depends: [search, tags, language]
-    })
+    let page = parseInt(router.query['p'] ?? '1')
+    if (isNaN(page) || page < 1) page = 1
+
+    function handlePageChange(newPage) {
+        router.push(`/templates/search?s=${search}&t=${tags}&l=${language}&p=${newPage}`)
+    }
+
+    const [data, setData] = useState(null)
+
+    useEffect(() => {
+        if (!router.isReady) return
+
+        apiRequest({
+            path: `/templates?limit=${PER_PAGE}&skip=${(page - 1) * PER_PAGE}&search=${search}&tags=${tags}&language=${language}&order=${order}`,
+        })
+            .then(resp => resp.json())
+            .then(data => setData(data))
+    }, [router])
 
     let templateList
     if (!data) {
@@ -32,13 +52,38 @@ export default function TemplateSearch() {
             <ReactLoading type='bars' color="#dbdbdb" height={128} width={100} className="mx-auto my-10"/>
         )
     } else {
+        let pageCount = Math.ceil(data.total / PER_PAGE)
+        if (pageCount === 0) pageCount = 1
+
         templateList = (
-            <div className="grid grid-cols-6 gap-5">
-                {data.map(template => (
-                    <div className="flex flex-col col-span-6 sm:col-span-3 lg:col-span-2" key={template.id}>
-                        <TemplateCard data={template}/>
-                    </div>
-                ))}
+            <div>
+                <div className="grid grid-cols-6 gap-5 mb-10">
+                    {data.templates.map(template => (
+                        <div className="flex flex-col col-span-6 sm:col-span-3 lg:col-span-2" key={template.id}>
+                            <TemplateCard data={template}/>
+                        </div>
+                    ))}
+                </div>
+                <div className="flex justify-center text-xl items-center mb-5 select-none">
+                    <button
+                        className="px-3 py-1 bg-theme-light hover:bg-theme-dark border-theme-darker border rounded-l-md"
+                        onClick={() => handlePageChange(page - 1)}>&lt;</button>
+                    {page > 1 ?
+                        <button className="px-3 py-1 bg-theme-light hover:bg-theme-dark border-theme-darker border"
+                                onClick={() => handlePageChange(page - 1)}>{page - 1}</button> : ''}
+                    <div className="px-3 py-1 bg-theme-dark border-theme-darker border-2">{page}</div>
+                    {page < pageCount ?
+                        <button className="px-3 py-1 bg-theme-light hover:bg-theme-dark border-theme-darker border"
+                                onClick={() => handlePageChange(page + 1)}>{page + 1}</button> : ''}
+                    {page < (pageCount - 1) ? (
+                        <div className="px-3 py-1 bg-theme-light border-theme-darker border">...</div>) : ''}
+                    {page < (pageCount - 2) ? (
+                        <button className="px-3 py-1 bg-theme-light hover:bg-theme-dark border-theme-darker border"
+                                onClick={() => handlePageChange(pageCount)}>{pageCount}</button>) : ''}
+                    <button
+                        className="px-3 py-1 bg-theme-light hover:bg-theme-dark border-theme-darker border rounded-r-md"
+                        onClick={() => handlePageChange(page + 1)}>&gt;</button>
+                </div>
             </div>
         )
     }
@@ -48,18 +93,12 @@ export default function TemplateSearch() {
             <Head>
                 <title>Templates | Xenon Bot</title>
             </Head>
-            <div className="bg-theme-darker px-3 md:px-5 py-10 grid justify-items-center">
-                <div className="max-w-2xl text-center">
-                    <h2 className="text-5xl font-bold mb-2">Discord Templates</h2>
-                    <div className="font-thin text-lg text-gray-300 mb-10 px-3">
-                        Find the best <span className="font-normal">templates</span> for your <span
-                        className="font-normal">discord server</span>.
-                    </div>
-                    <TemplateFilters/>
-                </div>
-            </div>
             <div className="grid justify-items-center py-10 px-3 md:px-5">
                 <div className="w-full xl:w-304">
+                    <div className="mb-10">
+                        <TemplateFilters showSort={true}/>
+                    </div>
+
                     {templateList}
                 </div>
             </div>

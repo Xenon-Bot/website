@@ -6,10 +6,16 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {useUser} from "../context/user";
 import {useState} from 'react'
 import UserDropdown from "./UserDropdown";
+import {useRouter} from "next/router";
 
 export default function NavBar() {
     const {t} = useTranslation('common')
     const user = useUser()
+    const router = useRouter()
+
+    function isPathActive(path) {
+        return router.pathname.startsWith(path)
+    }
 
     const [visible, setVisible] = useState(false)
 
@@ -26,14 +32,12 @@ export default function NavBar() {
                     </div>
                     <div className="flex flex-auto items-center text-xl hidden md:block">
                         <Link href="/templates" passHref>
-                            <a className="mr-7 text-gray-300 hover:text-blue-300 transition-colors">Templates</a>
+                            <a className={`mr-7 hover:text-blue-300 transition-colors ${isPathActive('/templates') ? 'text-blue-300' : 'text-gray-300'}`}>Templates</a>
                         </Link>
                         <Link href="/premium" passHref>
-                            <a className="mr-7 text-gray-300 hover:text-yellow-500 transition-colors">Premium</a>
+                            <a className={`mr-7 hover:text-yellow-500 transition-colors ${isPathActive('/premium') ? 'text-yellow-500' : 'text-gray-300'}`}>Premium</a>
                         </Link>
-                        <Link href="/docs" passHref>
-                            <a className="mr-7 text-gray-300 hover:text-blue-300 transition-colors">Documentation</a>
-                        </Link>
+                        <a href="/docs" target="_blank" className={`mr-7 hover:text-blue-300 transition-colors ${isPathActive('/docs') ? 'text-blue-300' : 'text-gray-300'}`}>{t('documentation')}</a>
                     </div>
                     <div className="flex flex-auto md:flex-initial items-center md:mr-5">
                         <a href="/discord" target="_blank"
@@ -66,17 +70,15 @@ export default function NavBar() {
                     </div>
                 </div>
                 <div
-                    className={`flex flex-col md:hidden px-5 py-3 mt-5 bg-theme-dark rounded-md ${visible ? '' : 'hidden'}`}>
+                    className={`flex flex-col md:hidden px-5 py-5 mt-5 bg-theme-dark rounded-md ${visible ? '' : 'hidden'}`}>
                     <div className="flex flex-col text-xl" onClick={() => setVisible(false)}>
                         <Link href="/templates" passHref>
                             <a className="mr-7 text-gray-300 hover:text-blue-300 transition-colors mb-3">Templates</a>
                         </Link>
-                        <Link href="/premium" passHref>
+                        <Link href="/premium" activeClass="text-white" passHref>
                             <a className="mr-7 text-gray-300 hover:text-yellow-500 transition-colors mb-3">Premium</a>
                         </Link>
-                        <Link href="/docs" passHref>
-                            <a className="mr-7 text-gray-300 hover:text-blue-300 transition-colors">Documentation</a>
-                        </Link>
+                        <a href="/docs" target="_blank" className="mr-7 text-gray-300 hover:text-blue-300 transition-colors">{t('documentation')}</a>
                     </div>
 
                     <div className="mt-5">

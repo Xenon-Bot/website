@@ -5,9 +5,10 @@ import React, {useEffect} from "react";
 import {useRouter} from "next/router";
 import {useToken} from "../context/token";
 import Head from "next/head";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 
-export async function getServerSideProps({query}) {
+export async function getServerSideProps({query, locale}) {
     if (!query.code) {
         return {
             redirect: {
@@ -18,6 +19,7 @@ export async function getServerSideProps({query}) {
     }
 
     return {
+        ...(await serverSideTranslations(locale, ['common'])),
         props: {code: query.code}
     }
 }
@@ -39,7 +41,9 @@ export default function Login({code, from}) {
     }, [data])
 
     if (error) {
-        setTimeout(() => router.push('/login'), 3000)
+        if (process.browser) {
+            setTimeout(() => router.push('/login'), 3000)
+        }
         return (
             <div className="my-20 text-center">
                 <div className="text-5xl mb-5">Something went wrong ...</div>
@@ -57,7 +61,9 @@ export default function Login({code, from}) {
         )
     }
 
-    setTimeout(() => router.push('/'), 3000)
+    if (process.browser) {
+        setTimeout(() => router.push('/'), 3000)
+    }
     return (
         <div className="my-20 text-center">
             <Head>

@@ -1,6 +1,12 @@
 {
-  "name": "Xenon",
-  "full_name": "Xenon Bot",
-  "short_description": "",
-  "long_description": ""
+  "shortDescription": "Discord server backups, templates and more",
+  "longDescription":  "Backup, archive, copy, clone or synchronize your discord server and take advantage of hundreds of free templates.",
+  "invite": "Invite",
+  "inviteNow": "Invite Now",
+  "joinDiscord": "Join Our Discord",
+  "support": "Support",
+  "faqTitle": "Frequently Asked Questions",
+  "faqFooter": "You didn't find the answer to your question?",
+  "getPremium": "Get Premium",
+  "documentation": "Documentation"
 }

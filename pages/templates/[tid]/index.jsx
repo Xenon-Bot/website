@@ -18,8 +18,10 @@ import Head from "next/head";
 import {useUser} from "../../../context/user";
 import {useToken} from "../../../context/token";
 import useApi from "../../../hooks/api";
+import {useRouter} from "next/router";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
-export async function getServerSideProps({params}) {
+export async function getServerSideProps({params, locale}) {
     const resp = await apiRequest({path: `/templates/${params.tid}`})
     if (resp.status === 404) {
         return {
@@ -30,6 +32,7 @@ export async function getServerSideProps({params}) {
 
     return {
         props: {
+            ...(await serverSideTranslations(locale, ['templates', 'common'])),
             template: await resp.json()
         },
     }
@@ -38,6 +41,7 @@ export async function getServerSideProps({params}) {
 export default function Template({template}) {
     const [token] = useToken()
     const user = useUser()
+    const router = useRouter()
 
     const {data: upvoteStatus} = useApi({
         path: `/templates/${template.id}/vote`,
@@ -57,14 +61,27 @@ export default function Template({template}) {
                 if (resp.ok) {
                     template.upvote_count++
                     setUpvoted(true)
+                    toast.success('Your vote has been counted')
                 } else {
-                    toast.error('You need to be logged in to upvote a template!')
+                    toast.error('You need to be logged in to upvote a template')
                 }
             })
     }
 
     function handleDelete() {
-
+        const result = confirm('Are you sure that you want to delete this template?')
+        if (result) {
+            apiRequest({method: 'DELETE', path: `/templates/${template.id}`, token})
+                .then(async resp => {
+                    if (resp.ok) {
+                        router.push(`/users/${user.id}`)
+                        toast.success('Your template has been deleted')
+                    } else {
+                        const data = await resp.json()
+                        toast.error(data.text)
+                    }
+                })
+        }
     }
 
     // <meta property="twitter:url" key="twitter_url" content={``}/>

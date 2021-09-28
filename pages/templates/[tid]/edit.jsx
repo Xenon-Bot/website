@@ -5,8 +5,9 @@ import TemplatePreview from "../../../components/templates/TemplatePreview";
 import {toast} from "react-toastify";
 import {useToken} from "../../../context/token";
 import Head from "next/head";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
-export async function getServerSideProps({params}) {
+export async function getServerSideProps({params, locale}) {
     const resp = await apiRequest({path: `/templates/${params.tid}`})
     if (resp.status === 404) {
         return {
@@ -17,6 +18,7 @@ export async function getServerSideProps({params}) {
 
     return {
         props: {
+            ...(await serverSideTranslations(locale, ['templates', 'common'])),
             template: await resp.json()
         },
     }
@@ -47,6 +49,7 @@ export default function EditTemplate({template}) {
                 const data = await resp.json()
                 if (resp.ok) {
                     router.push(`/templates/${data.id}`)
+                    toast.success('Your template has been updated')
                 } else {
                     toast.error(data.text)
                 }

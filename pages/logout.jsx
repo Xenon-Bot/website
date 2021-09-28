@@ -2,6 +2,15 @@ import {useToken} from "../context/token";
 import React, {useEffect} from "react";
 import {useRouter} from "next/router";
 import Head from "next/head";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+
+export async function getStaticProps({locale}) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+        },
+    };
+}
 
 export default function Logout() {
     const [token, setToken] = useToken()
@@ -11,7 +20,9 @@ export default function Logout() {
         setToken(null)
     })
 
-    setTimeout(() => router.push('/'), 3000)
+    if (process.browser) {
+        setTimeout(() => router.push('/'), 3000)
+    }
     return (
         <div className="my-20 text-center">
             <Head>

@@ -5,11 +5,21 @@ import apiRequest from "../../api";
 import {toast} from "react-toastify";
 import {useToken} from "../../context/token";
 import Head from "next/head";
+import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 
 let debounceIdTimeout
 
 function extractTemplateId(value) {
-    return value
+    const urlSegments = value.replace(/\/$/, "").split("/");
+    return urlSegments[urlSegments.length - 1];
+}
+
+export async function getStaticProps({locale}) {
+    return {
+        props: {
+            ...(await serverSideTranslations(locale, ['templates', 'common'])),
+        },
+    };
 }
 
 export default function AddTemplate() {
@@ -74,6 +84,7 @@ export default function AddTemplate() {
                 const data = await resp.json()
                 if (resp.ok) {
                     router.push(`/templates/${data.id}`)
+                    toast.success('Your template has been added')
                 } else {
                     toast.error(data.text)
                 }

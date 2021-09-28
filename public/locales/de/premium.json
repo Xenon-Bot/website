@@ -1,0 +1,44 @@
+{
+  "catchLine": "Hol das beste aus Xenon heraus und profitiere von den premium Funktionen",
+  "subscribeNow": "Jetzt Abonnieren",
+  "perMonth": "pro monat",
+  "perks": {
+    "backupBase": "Sichere Kanäle, Rollen & Server Einstellungen",
+    "backupCount": "Bis zu **{{count}}** Backups",
+    "backupAutomaticKeep": "Behalte **{{count}}** automatisch erstellte Backup(s) pro Server",
+    "backupPremium": "Sichere Rollen-Zuweisungen, Nicknamen & Bans",
+    "backupMessages": "Sichere Nachrichten",
+    "backupMessageCount": "Sichere **{{count}}** Nachrichten pro Kanal",
+    "synchronize": "Synchronisiere Nachrichten, Rollen-Zuweisungen & Bans"
+  },
+  "faq": [
+    {
+      "question": "Was sind die Funktionen von Xenon Premium?",
+      "answer": "In addition to backing up roles, channels and server settings using Xenon, premium allows you to save messages, bans, role assignments and nicknames. Each tier can save a different count of messages per channel. Xenon Premium also allows you to have more backups and keep more automatic backups per server. In addition to these you can also use premium to synchronize messages between multiple channels or synchronize bans and role assignments between multiple servers."
+    },
+    {
+      "question": "Auf wie vielen Servern kann ich Premium benutzen?",
+      "answer": "Xenon Premium is linked to your discord account. You can use it on as many servers as you like. Keep in mind that other server admins that haven't purchased premium won't be able to use it."
+    },
+    {
+      "question": "Wo kann ich Premium kaufen?",
+      "answer": "You can buy premium on Patreon at [www.patreon.com/merlinfuchs](https://www.patreon.com/merlinfuchs)."
+    },
+    {
+      "question": "Welche Zahlungsmethoden werden akzeptiert?",
+      "answer": "Patreon supports a variety of payment methods including credit cards, debit cards, and PayPal."
+    },
+    {
+      "question": "Kann ich eine Rückerstattung bekommen?",
+      "answer": "We might issue refunds in certain circumstances. Please check out our [Refund Policy](/terms) for more information."
+    },
+    {
+      "question": "Kann ich mein Premium Abonnement zwischen verschiedenen Discord Accounts transferieren?",
+      "answer": "Yes. You can change the Discord account that has the premium perks at any time. Just go to the [profile settings at Patreon](https://www.patreon.com/settings/apps) and connect the correct Discord account."
+    },
+    {
+      "question": "Wie aktiviere ich Premium nachdem ich es gekauft habe?",
+      "answer": "After buying Xenon Premium on Patreon please join our [Discord server](/discord) and connect yourDiscord account to Patreon in your [profile settings at Patreon](https://www.patreon.com/settings/apps). You should now be able to see a channel called #patrons-info on your Discord server. This channel contains information on how to invite and use Xenon Premium.  \nIf you still don't see the channel please try to disconnect and reconnect your Discord account in your [profile settings at Patreon](https://www.patreon.com/settings/apps)."
+    }
+  ]
+}

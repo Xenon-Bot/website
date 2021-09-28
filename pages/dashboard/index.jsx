@@ -4,7 +4,7 @@ import DashboardLayout from "../../layouts/dashboard";
 export async function getStaticProps({locale}) {
     return {
         props: {
-            ...(await serverSideTranslations(locale, ['dashboard'])),
+            ...(await serverSideTranslations(locale, ['dashboard', 'common'])),
         },
     };
 }

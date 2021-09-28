@@ -1,1 +1,12 @@
-{}
+{
+  "shortDescription": "Discord Server Backups, Templates und mehr",
+  "longDescription": "Backup, archive, copy, clone or synchronize your discord server and take advantage of hundreds of free templates.",
+  "invite": "Hinzufügen",
+  "inviteNow": "Jetzt Hinzufügen",
+  "joinDiscord": "Trete unserem Discord bei",
+  "support": "Support",
+  "faqTitle": "Häufig Gestellte Fragen",
+  "faqFooter": "Deine Frage wurde nicht beantwortet?",
+  "getPremium": "Abonniere Premium",
+  "documentation": "Dokumentation"
+}
