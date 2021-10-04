@@ -1,0 +1,21 @@
+{
+  "title": "Discord Templates",
+  "subTitle": "Find the best **templates** for your **discord server**.",
+  "searchPlaceholder": "What are you looking for?",
+  "search": "Search",
+  "popular": "Popular",
+  "new": "New",
+  "anyLanguage": "Any Language",
+  "categories": {
+    "topTitle": "Top Templates",
+    "topSubTitle": "The templates with the most upvotes",
+    "englishTitle": "English  Templates",
+    "englishSubTitle": "Templates made for english speaking people",
+    "communityTitle": "Community Templates",
+    "communitySubTitle": "Templates made for communities of any type",
+    "gamingTitle": "Gaming Templates",
+    "gamingSubTitle": "Templates made for gaming related servers",
+    "schoolTitle": "School Templates",
+    "schoolSubTitle": "Templates made for schools and classrooms"
+  }
+}

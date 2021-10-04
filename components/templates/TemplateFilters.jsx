@@ -1,5 +1,6 @@
 import {useRouter} from "next/router";
 import {useEffect, useState} from 'react'
+import {useTranslation} from "next-i18next";
 
 const availableTags = [
     'school',
@@ -16,6 +17,7 @@ let loadedQuery = false
 
 export default function TemplateFilters({showSort = false}) {
     const router = useRouter()
+    const {t} = useTranslation('templates')
 
     const [search, setSearch] = useState('')
     const [tags, setTags] = useState([])
@@ -79,11 +81,11 @@ export default function TemplateFilters({showSort = false}) {
         <div>
             <form onSubmit={handleSubmit} className="flex text-xl">
                 <input type="text"
-                       className="bg-theme-dark rounded-lg px-5 py-3 placeholder-gray-500 font-thin flex-auto w-5"
-                       placeholder="What are you looking for?" name="search" value={search}
+                       className="bg-theme-dark rounded-l-lg px-5 py-3 placeholder-gray-500 font-thin flex-auto w-5"
+                       placeholder={t('searchPlaceholder')} name="search" value={search}
                        onChange={e => setSearch(e.target.value)}/>
                 <button type="submit" className="bg-theme-light rounded-r-lg px-5 py-3 flex-initial font-normal">
-                    Search
+                    {t('search')}
                 </button>
             </form>
             <div className="flex flex-col-reverse sm:flex-row mt-3">
@@ -95,9 +97,9 @@ export default function TemplateFilters({showSort = false}) {
                     ))}
                 </div>
                 <div className="flex-initial flex mb-3 sm:mb-0">
-                    <div className="flex-auto">
+                    <div className="flex-grow flex-shrink-0">
                         <select className="bg-theme-light px-3 py-2 rounded-md w-full" value={language} onChange={handleLanguageChange}>
-                            <option value="">Any Language</option>
+                            <option value="">{t('anyLanguage')}</option>
                             <option value="en">English</option>
                             <option value="es">Spanish</option>
                             <option value="fr">French</option>
@@ -107,11 +109,11 @@ export default function TemplateFilters({showSort = false}) {
                         </select>
                     </div>
                     {showSort ? (
-                        <div className="flex-auto ml-2">
+                        <div className="flex-grow flex-shrink-0 ml-2">
                             <select className="bg-theme-light px-3 py-2 rounded-md w-full" value={order}
                                     onChange={handleOrderChange}>
-                                <option value="popular">Popular</option>
-                                <option value="new">New</option>
+                                <option value="popular">{t('popular')}</option>
+                                <option value="new">{t('new')}</option>
                             </select>
                         </div>
                     ) : ''}

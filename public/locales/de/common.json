@@ -8,5 +8,10 @@
   "faqTitle": "Häufig Gestellte Fragen",
   "faqFooter": "Deine Frage wurde nicht beantwortet?",
   "getPremium": "Abonniere Premium",
-  "documentation": "Dokumentation"
+  "documentation": "Dokumentation",
+  "profile": "Profil",
+  "addTemplate": "Template Hinzufügen",
+  "logout": "Ausloggen",
+  "login": "Einloggen",
+  "cancel": "Abbrechen"
 }

@@ -50,18 +50,27 @@ export default function Premium() {
             </div>
             <div className="grid justify-items-center mb-20">
                 <div className="w-full xl:w-304 px-3 md:px-5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 xl:gap-10 mb-20">
-                        <div className="bg-theme-light py-48 rounded-md shadow-xl">
-                            backup role assignments, nicknames & bans
+                    <div className="grid justify-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 xl:gap-16 mb-32 px-2">
+                        <div className="bg-theme-dark rounded-md shadow-xl flex flex-col">
+                            <div className="pt-5 pb-10 px-5 text-center flex-auto items-center">
+                                <div className="text-3xl font-bold text-gray-200">Backup role assignments & nicknames</div>
+                            </div>
+                            <img src="/template-load.jpg" alt=""
+                                 className="flex-initial transform scale-105 xl:scale-110 rounded-md shadow-xl"/>
                         </div>
-                        <div className="bg-theme-light py-48 rounded-md shadow-xl">
-                            backup messages
+                        <div className="bg-theme-dark rounded-md shadow-xl flex flex-col">
+                            <div className="pt-5 pb-10 px-5 text-center flex-auto items-center">
+                                <div className="text-3xl font-bold text-gray-200">Backup messsages</div>
+                            </div>
+                            <img src="/template-load.jpg" alt=""
+                                 className="flex-initial transform scale-105 xl:scale-110 rounded-md shadow-xl"/>
                         </div>
-                        <div className="bg-theme-light py-48 rounded-md shadow-xl">
-                            synchronize messages, bans and role assignments
-                        </div>
-                        <div className="bg-theme-light py-48 rounded-md shadow-xl">
-
+                        <div className="bg-theme-dark rounded-md shadow-xl flex flex-col">
+                            <div className="pt-5 pb-10 px-5 text-center flex-auto items-center">
+                                <div className="text-3xl font-bold text-gray-200">Synchronize messages, bans and role assignments</div>
+                            </div>
+                            <img src="/template-load.jpg" alt=""
+                                 className="flex-initial transform scale-105 xl:scale-110 rounded-md shadow-xl"/>
                         </div>
                     </div>
                     <div className="flex flex-col lg:flex-row mb-36">

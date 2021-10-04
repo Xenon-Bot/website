@@ -1,0 +1,43 @@
+.previewRoles, .previewChannels {
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 0.9em;
+}
+
+.previewRole {
+    border-radius: 1em;
+    padding: 2px 9px 2px 9px;
+    margin: 3px;
+    display: inline-block;
+}
+
+.previewRoleDot {
+    display: inline-block;
+    height: 1em;
+    width: 1em;
+    padding-right: 3px;
+    border-radius: 50%;
+}
+
+.previewCategoryChannel {
+    display: block;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding-bottom: 5px;
+    padding-top: 10px;
+}
+
+.previewTextChannel {
+    display: block;
+    padding-left: 15px;
+}
+
+.previewTextChannel .hashtag {
+    font-size: 1.4em;
+    padding-right: 5px;
+}
+
+.previewVoiceChannel {
+    display: block;
+    padding-left: 15px;
+}

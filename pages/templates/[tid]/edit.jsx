@@ -6,6 +6,7 @@ import {toast} from "react-toastify";
 import {useToken} from "../../../context/token";
 import Head from "next/head";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {useTranslation} from "next-i18next";
 
 export async function getServerSideProps({params, locale}) {
     const resp = await apiRequest({path: `/templates/${params.tid}`})
@@ -26,6 +27,7 @@ export async function getServerSideProps({params, locale}) {
 
 export default function EditTemplate({template}) {
     const router = useRouter()
+    const {t} = useTranslation(['templates', 'common'])
     const [token] = useToken()
 
     const [tags, setTags] = useState(template.tags)
@@ -62,13 +64,7 @@ export default function EditTemplate({template}) {
                 <title>Edit {template.name} | Xenon Bot</title>
             </Head>
             <div className="w-full xl:w-304">
-                <h3 className="text-4xl mb-3">Add Template</h3>
-                <div className="text-xl text-gray-300 mb-5">
-                    <span>Not sure how to create a template? Check the </span>
-                    <a href="https://wiki.xenon.bot/templates#creating-a-template" target="_blank" rel="noreferrer"
-                       className="text-blue-400 hover:text-blue-500">guide here</a>
-                    <span>.</span>
-                </div>
+                <h3 className="text-4xl mb-5">Edit Template</h3>
                 <div className="bg-theme-darker rounded-md p-5 mb-5">
                     <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 mb-5">
                         <div>

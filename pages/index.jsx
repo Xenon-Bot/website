@@ -6,11 +6,6 @@ import Link from "next/link";
 import Head from "next/head";
 import QuestionAnswer from "../components/QuestionAnswer";
 
-// TODO: localization
-// TODO: main faq answers
-// TODO: premium feature showcase
-// TODO: light theme?
-
 export async function getStaticProps({locale}) {
     return {
         props: {
@@ -25,23 +20,23 @@ export default function Home() {
     // TODO: localization
     const sections = [
         {
-            title: 'Backup your discord server and go back in time when you need it',
-            description: 'Use server backups to save the current state of your discord server including roles, channels, and server settings. Get Xenon Premium to save messages, members, and bans as well. Backups are stored forever and can be loaded on any server at any time.',
+            title: t('sections.0.title'),
+            description: t('sections.0.description'),
             image: '/create-backup.jpg'
         },
         {
-            title: 'Automatically create backups every day without having to think about it',
-            description: 'Are you tired creating backups of your server manually. Xenon allows you to automatically create backups of your server every few hours. Get Xenon Premium to keep multiple automatic backups.',
+            title: t('sections.1.title'),
+            description: t('sections.1.description'),
             image: '/backup-interval.jpg'
         },
         {
-            title: 'Access thousands of free templates for your discord server',
-            description: 'Xenon was the first bot to offer server templates on discord. We have one of the largest collection of server templates available for free. Contribute by creating and sharing a template yourself.',
+            title: t('sections.2.title'),
+            description: t('sections.2.description'),
             image: 'template-load.jpg'
         },
         {
-            title: 'Synchronize messages, bans and role assignments across servers',
-            description: 'Get Xenon Premium to synchronize messages, bans, and role assignments between servers. Use it to connect multiple channels and server together or to keep your backup servers updated.',
+            title: t('sections.3.title'),
+            description: t('sections.3.description'),
             image: 'sync-messages.jpg'
         }
     ]

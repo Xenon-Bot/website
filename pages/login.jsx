@@ -19,19 +19,22 @@ export async function getServerSideProps({query, locale}) {
     }
 
     return {
-        ...(await serverSideTranslations(locale, ['common'])),
-        props: {code: query.code}
+        props: {
+            ...(await serverSideTranslations(locale, ['common'])),
+            code: query.code
+        }
     }
 }
 
-export default function Login({code, from}) {
+export default function Login({code}) {
     const router = useRouter()
     const [token, setToken] = useToken()
 
     const {data, error} = useApi({
         method: 'POST',
         path: '/auth/exchange',
-        data: {code}
+        data: {code},
+        depends: [code]
     })
 
     useEffect(() => {

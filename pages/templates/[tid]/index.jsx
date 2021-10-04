@@ -89,6 +89,7 @@ export default function Template({template}) {
         <div>
             <Head>
                 <title>{template.name} | Xenon Bot</title>
+                <meta property="description" key="description" content={template.description}/>
                 <meta property="og:title" key="og_title" content={template.name}/>
                 <meta property="og:description" key="og_description" content={template.description}/>
                 <meta property="twitter:title" key="tw_title" content={template.name}/>

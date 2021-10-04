@@ -7,6 +7,7 @@ import TemplateCard from "../../../components/templates/TemplateCard";
 import ReactLoading from "react-loading";
 import Head from "next/head";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {useTranslation} from "next-i18next";
 
 export async function getServerSideProps({params, res, locale}) {
     res.setHeader(
@@ -33,10 +34,12 @@ export async function getServerSideProps({params, res, locale}) {
 }
 
 export default function User({user}) {
-    const {data: templates, error} = useApi({
+    const {t} = useTranslation('users')
+
+    const {data, error} = useApi({
         path: `/templates?creator=${user.id}`,
         depends: [user]
-    })
+    }, [user.id])
 
     return (
         <div className="grid justify-items-center mt-10 mb-20 px-3 md:px-5">
@@ -95,17 +98,17 @@ export default function User({user}) {
                 </div>
                 <div className="col-span-7 lg:col-span-5">
                     <h3 className="text-4xl mb-5">Server Templates</h3>
-                    {templates ? (
-                        templates.length ? (
+                    {data ? (
+                        data.total ? (
                             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                                {templates.map(template => (
+                                {data.templates.map(template => (
                                     <div className="flex flex-col" key={template.id}>
                                         <TemplateCard data={template}/>
                                     </div>
                                 ))}
                             </div>
                         ) : (
-                            <div className="text-xl text-gray-400">This user does not have any templates yet.</div>
+                            <div className="text-xl text-gray-400">{t('noTemplates')}</div>
                         )
                     ) : (
                         <ReactLoading type='bars' color="#dbdbdb" height={128} width={100} className="mx-auto my-10"/>

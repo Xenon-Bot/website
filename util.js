@@ -8,6 +8,12 @@ export function userAvatar({id, discriminator, avatar}, {size = 512}) {
     }
 }
 
+export function guildIcon({id, icon}, {size = 512}) {
+    if (!icon) return null
+
+    return `${DISCORD_CDN}/icons/${id}/${icon}.webp?size=${size}`
+}
+
 export function hasBitFlag(value, bit) {
     if (!value) return false
 

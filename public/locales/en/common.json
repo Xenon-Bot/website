@@ -8,5 +8,10 @@
   "faqTitle": "Frequently Asked Questions",
   "faqFooter": "You didn't find the answer to your question?",
   "getPremium": "Get Premium",
-  "documentation": "Documentation"
+  "documentation": "Documentation",
+  "profile": "Profile",
+  "addTemplate": "Add Template",
+  "logout": "Logout",
+  "login": "Login",
+  "cancel": "Cancel"
 }

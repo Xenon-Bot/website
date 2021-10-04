@@ -14,31 +14,31 @@
   "faq": [
     {
       "question": "Was sind die Funktionen von Xenon Premium?",
-      "answer": "In addition to backing up roles, channels and server settings using Xenon, premium allows you to save messages, bans, role assignments and nicknames. Each tier can save a different count of messages per channel. Xenon Premium also allows you to have more backups and keep more automatic backups per server. In addition to these you can also use premium to synchronize messages between multiple channels or synchronize bans and role assignments between multiple servers."
+      "answer": "Zusätzlich zu Rollen, Kanälen und Server Enstellung sichert Xenon Premium außerdem Nachrichten, Bans, Rollen Zuweisungen und Nicknamen. Jede Premium-Stufe kann verschieden viele Nachrichten pro Kanal sichern. Xenon Premium erlaubt es dir außerdem insgesamt mehr Backups zu haben und mehrere automatische Backups pro Server zu sichern. Zusätzlich kannst du mit Premium Nachrichten zwischen mehreren Kanälen und Bans und Rollen Zuweisungen zwischen mehreren Servern synchronisieren."
     },
     {
       "question": "Auf wie vielen Servern kann ich Premium benutzen?",
-      "answer": "Xenon Premium is linked to your discord account. You can use it on as many servers as you like. Keep in mind that other server admins that haven't purchased premium won't be able to use it."
+      "answer": "Xenon Premium ist mit deinem Discord Account verbunden. Du kannst es auf so vielen Server benutzen wie du willst. Beachte dabei, dass andere Server Administratoren auch Premium brauchen wenn sie den benutzen wollen."
     },
     {
       "question": "Wo kann ich Premium kaufen?",
-      "answer": "You can buy premium on Patreon at [www.patreon.com/merlinfuchs](https://www.patreon.com/merlinfuchs)."
+      "answer": "Du Xenon Premium auf Patreon kaufen: [www.patreon.com/merlinfuchs](https://www.patreon.com/merlinfuchs)."
     },
     {
       "question": "Welche Zahlungsmethoden werden akzeptiert?",
-      "answer": "Patreon supports a variety of payment methods including credit cards, debit cards, and PayPal."
+      "answer": "Patreon akzeptiert viele Zahlungsmethoden inklusive Kreditkarten, Debit Karten und PayPal."
     },
     {
       "question": "Kann ich eine Rückerstattung bekommen?",
-      "answer": "We might issue refunds in certain circumstances. Please check out our [Refund Policy](/terms) for more information."
+      "answer": "Rückerstattung finden nur unter besonderen Umständen statt. Bitte lese unsere [Refund Policy](/terms) für mehr Informationen."
     },
     {
       "question": "Kann ich mein Premium Abonnement zwischen verschiedenen Discord Accounts transferieren?",
-      "answer": "Yes. You can change the Discord account that has the premium perks at any time. Just go to the [profile settings at Patreon](https://www.patreon.com/settings/apps) and connect the correct Discord account."
+      "answer": "Ja. Du kannst den verbunden Discord Account jeder Zeit ändern. Gehe einfach in die [Profile Einstellungen auf Patreon](https://www.patreon.com/settings/apps) und verbinde den richtigen Discord Account."
     },
     {
       "question": "Wie aktiviere ich Premium nachdem ich es gekauft habe?",
-      "answer": "After buying Xenon Premium on Patreon please join our [Discord server](/discord) and connect yourDiscord account to Patreon in your [profile settings at Patreon](https://www.patreon.com/settings/apps). You should now be able to see a channel called #patrons-info on your Discord server. This channel contains information on how to invite and use Xenon Premium.  \nIf you still don't see the channel please try to disconnect and reconnect your Discord account in your [profile settings at Patreon](https://www.patreon.com/settings/apps)."
+      "answer": "Nachdem du Xenon Premium auf Patreon gekauft hast trete bitte unserem [Discord Server](/discord) bei und verbinde deinen Discord Account mit Patreon in deinen [Profil Einstellungen auf Patreon](https://www.patreon.com/settings/apps). Du solltest auf unserem Support Server nun einen Kanal names #patrons-info sehen können. Dieser Kanal enthält mehr Informationen wie du Xenon Premium zu deinem Server hinzufügst und nutzt. \nWenn du den Kanal weiterhin nicht sehen kannst, versuche deinen Discord Account noch einmal neu [Profil Einstellungen auf Patreon](https://www.patreon.com/settings/apps) zu verbinden."
     }
   ]
 }

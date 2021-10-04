@@ -4,14 +4,30 @@ import {faSignInAlt, faBars, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {faDiscord, faTwitter, faMedium} from "@fortawesome/free-brands-svg-icons";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {useUser} from "../context/user";
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
 import UserDropdown from "./UserDropdown";
 import {useRouter} from "next/router";
+import {useToken} from "../context/token";
+import apiRequest from "../api";
 
 export default function NavBar() {
     const {t} = useTranslation('common')
     const user = useUser()
+    const [token] = useToken()
     const router = useRouter()
+
+    // TODO: replace with proper retrieval UI
+    useEffect(() => {
+        window.getApiToken = () => {
+            apiRequest({
+                method: 'POST',
+                path: '/auth/token',
+                token
+            })
+                .then(resp => resp.json())
+                .then(data => console.log(data.token))
+        }
+    }, [token])
 
     function isPathActive(path) {
         return router.pathname.startsWith(path)
@@ -57,7 +73,7 @@ export default function NavBar() {
                             <Link href="/login" passHref>
                                 <a className="text-xl bg-blue-500 hover:bg-blue-600 transition-colors rounded-md px-3 py-2 flex items-center">
                                     <FontAwesomeIcon icon={faSignInAlt} className="mr-2"/>
-                                    <div>Login</div>
+                                    <div>{t('login')}</div>
                                 </a>
                             </Link>
                         )}
@@ -88,7 +104,7 @@ export default function NavBar() {
                             <Link href="/login" passHref>
                                 <a className="text-xl bg-blue-500 hover:bg-blue-600 transition-colors rounded-md px-3 py-2 flex items-center">
                                     <FontAwesomeIcon icon={faSignInAlt} className="mr-2"/>
-                                    <div>Login</div>
+                                    <div>{t('login')}</div>
                                 </a>
                             </Link>
                         )}

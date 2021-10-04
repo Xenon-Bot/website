@@ -6,6 +6,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faArrowUp, faFlagUsa, faBook, faUserFriends, faGamepad} from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 import apiRequest from "../../api";
+import {useTranslation} from "next-i18next";
+import Markdown from "../../components/Markdown";
 
 export async function getStaticProps({locale}) {
     async function getTemplates(tags, language) {
@@ -28,49 +30,53 @@ export async function getStaticProps({locale}) {
     return {
         props: {
             ...(await serverSideTranslations(locale, ['templates', 'common'])),
-            categories: [
-                {
-                    name: 'Top Templates',
-                    description: 'The templates with the most upvotes!',
-                    icon: faArrowUp,
-                    templates: data[0],
-                    query: ''
-                },
-                {
-                    name: 'English Templates',
-                    description: 'Templates made for english speaking people',
-                    icon: faFlagUsa,
-                    templates: data[1],
-                    query: 'l=en'
-                },
-                {
-                    name: 'Community Templates',
-                    description: 'Templates made for communities of any type',
-                    icon: faUserFriends,
-                    templates: data[2],
-                    query: 't=community'
-                },
-                {
-                    name: 'Gaming Templates',
-                    description: 'Templates made for gaming related servers',
-                    icon: faGamepad,
-                    templates: data[3],
-                    query: 't=gaming'
-                },
-                {
-                    name: 'School Templates',
-                    description: 'Templates made for schools and classrooms',
-                    icon: faBook,
-                    templates: data[4],
-                    query: 't=school'
-                }
-            ]
+            data
         },
         revalidate: 15 * 60
     };
 }
 
-export default function Templates({categories}) {
+export default function Templates({data}) {
+    const {t} = useTranslation('templates')
+
+    const categories = [
+        {
+            name: t('categories.topTitle'),
+            description: t('categories.topSubTitle'),
+            icon: faArrowUp,
+            templates: data[0],
+            query: ''
+        },
+        {
+            name: t('categories.englishTitle'),
+            description: t('categories.englishSubTitle'),
+            icon: faFlagUsa,
+            templates: data[1],
+            query: 'l=en'
+        },
+        {
+            name: t('categories.communityTitle'),
+            description: t('categories.communityTitleSubTitle'),
+            icon: faUserFriends,
+            templates: data[2],
+            query: 't=community'
+        },
+        {
+            name: t('categories.gamingTitle'),
+            description: t('categories.gamingSubTitle'),
+            icon: faGamepad,
+            templates: data[3],
+            query: 't=gaming'
+        },
+        {
+            name: t('categories.schoolTitle'),
+            description: t('categories.schoolSubTitle'),
+            icon: faBook,
+            templates: data[4],
+            query: 't=school'
+        }
+    ]
+
     return (
         <div>
             <Head>
@@ -78,10 +84,9 @@ export default function Templates({categories}) {
             </Head>
             <div className="bg-theme-darker px-3 md:px-5 py-10 grid justify-items-center">
                 <div className="max-w-2xl text-center">
-                    <h2 className="text-5xl font-bold mb-2">Discord Templates</h2>
+                    <h2 className="text-5xl font-bold mb-2">{t('title')}</h2>
                     <div className="font-thin text-lg text-gray-300 mb-10 px-3">
-                        Find the best <span className="font-normal">templates</span> for your <span
-                        className="font-normal">discord server</span>.
+                        <Markdown>{t('subTitle')}</Markdown>
                     </div>
                     <TemplateFilters/>
                 </div>
@@ -111,7 +116,8 @@ export default function Templates({categories}) {
                             </div>
                             <div className="text-center mt-14">
                                 <Link href={`/templates/search?${category.query}`} passHref>
-                                    <a className="bg-theme-dark hover:bg-theme-light rounded-lg px-3 py-2 text-xl">View More</a>
+                                    <a className="bg-theme-dark hover:bg-theme-light rounded-lg px-3 py-2 text-xl">View
+                                        More</a>
                                 </Link>
                             </div>
                         </div>

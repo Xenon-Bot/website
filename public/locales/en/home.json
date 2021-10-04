@@ -1,5 +1,52 @@
 {
-  "faq": [],
+  "sections": [
+    {
+      "title": "Backup your discord server and go back in time when you need it",
+      "description": "Use server backups to save the current state of your discord server including roles, channels, and server settings. Get Xenon Premium to save messages, members, and bans as well. Backups are stored forever and can be loaded on any server at any time."
+    },
+    {
+      "title": "Automatically create backups every day without having to think about it",
+      "description": "Are you tired creating backups of your server manually? Xenon allows you to automatically create backups of your server every few hours. Get Xenon Premium to keep multiple automatic backups."
+    },
+    {
+      "title": "Access thousands of free templates for your discord server",
+      "description": "Xenon was the first bot to offer server templates on discord. We have one of the largest collection of server templates available for free. Contribute by creating and sharing a template yourself."
+    },
+    {
+      "title": "Synchronize messages, bans and role assignments across servers",
+      "description": "Get Xenon Premium to synchronize messages, bans, and role assignments between servers. Use it to connect multiple channels and server together or to keep your backup servers updated."
+    }
+  ],
+  "faq": [
+    {
+      "question": "How do I add Xenon to my server?",
+      "answer": "Click [here](/invite) to invite Xenon to your server."
+    },
+    {
+      "question": "What can Xenon save in a backup?",
+      "answer": "Xenon saves roles, channels and server settings by default. If you want to save messages, bans, and member data take a look at [Xenon Premium](/premium)."
+    },
+    {
+      "question": "Can I use Xenon to copy channels and roles from one server to another?",
+      "answer": "Yes you can! Just create a backup on one server and load it on the other one."
+    },
+    {
+      "question": "Can I share my backups with other discord users?",
+      "answer": "No. Backups are liked to the discord account that was used to create them. There is no way to transfer them. If you want to share your server structure with other people use template."
+    },
+    {
+      "question": "Is there a video that shows me how to use Xenon?",
+      "answer": "Yes! You can find it [here](https://www.youtube.com/watch?v=Z0JSyOLuCD4)."
+    },
+    {
+      "question": "Can other people create or load backups on my server?",
+      "answer": "No. Only members with administrator permissions can load backups by default. Loading a backup can only be done by the server owner by default. You can change this behavior using the '/settings permissions' command."
+    },
+    {
+      "question": "Where can I find public templates for my server?",
+      "answer": "You can find a list of public templates [here](/templates)."
+    }
+  ],
   "preFooterTitle": "Ready to start?",
   "preFooterText": "Invite the bot for free or get premium to take advantage of all features."
 }
