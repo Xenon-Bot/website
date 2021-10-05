@@ -21,18 +21,6 @@ class MyDocument extends Document {
                     {/* CF Analytics */}
                     <script defer src='https://static.cloudflareinsights.com/beacon.min.js'
                             data-cf-beacon='{"token": "2332cbd67f8c4cea84302d71b7fc95c4"}'/>
-
-                    {/* NitroPay */}
-                    <script dangerouslySetInnerHTML={{
-                        __html: `
-                            window['nitroAds'] = window['nitroAds'] || {
-                                createAd: function () {
-                                    window.nitroAds.queue.push(["createAd", arguments])
-                                }, queue: []
-                            };
-                        `
-                    }}/>
-                    <script async src="https://s.nitropay.com/ads-593.js"/>
                 </Head>
                 <body>
                 <Main/>
