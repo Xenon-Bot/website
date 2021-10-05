@@ -51,9 +51,9 @@ export default function Home() {
             <div className="grid justify-items-center bg-theme-darker px-5 pt-20 pb-28 mb-20">
                 <div className="text-center max-w-2xl">
                     <h1 className="text-6xl sm:text-7xl font-bold mb-5">Xenon Bot</h1>
-                    <div className="text-gray-400 text-2xl mb-10">
+                    <h2 className="text-gray-400 text-2xl mb-10">
                         {t('common:longDescription')}
-                    </div>
+                    </h2>
                     <a href="/invite" target="_blank"
                        className="bg-blue-400 text-black transform hover:scale-105 transition-transform transition-300 inline-block transition-colors px-8 py-2 rounded-md text-2xl mr-4">
                         {t('common:invite')}

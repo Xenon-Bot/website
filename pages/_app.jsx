@@ -22,10 +22,10 @@ function MyApp({Component, pageProps}) {
                 <meta name="description"
                       content="Backup, archive, copy, clone or synchronize your discord server and take advantage of hundreds of free templates."
                       key="description"/>
-                <meta name="theme-color" content="#2E71B9" key="color"/>
+                <meta name="theme-color" content="#60a5fa" key="color"/>
                 <meta property="og:title" content="Xenon Bot" key="og_title"/>
                 <meta property="og:description" key="og_description"
-                      content="Backup, archive, copy, clone or synchronize your discord server and take advantage of hundreds of free templates."/>
+                      content="Use Xenon Bot to Backup, archive, copy, clone or synchronize your discord server and take advantage of hundreds of free templates."/>
                 <meta property="og:image" content="https://xenon.bot/logo-big.png" key="og_image"/>
                 <meta property="og:site_name" content="xenon.bot" key="og_site_name"/>
                 <meta property="twitter:site" content="@xenon_bot"/>

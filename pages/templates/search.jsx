@@ -92,6 +92,11 @@ export default function TemplateSearch() {
         <div>
             <Head>
                 <title>Templates | Xenon Bot</title>
+                <meta name="description" key="description"
+                      content="Choose from hundreds of different discord templates and find the right one for your new server."/>
+                <meta property="og:title" content="Discord Templates" key="og_title"/>
+                <meta property="og:description" key="og_description"
+                      content="Choose from hundreds of different discord templates and find the right one for your new server."/>
             </Head>
             <div className="grid justify-items-center py-10 px-3 md:px-5">
                 <div className="w-full xl:w-304">

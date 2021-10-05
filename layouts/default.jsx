@@ -11,7 +11,7 @@ export default function DefaultLayout({children}) {
                 <Head>
                     <title>Xenon Bot</title>
                 </Head>
-                <div className="flex flex-col h-screen overflow-y-auto">
+                <div className="flex flex-col min-h-screen">
                     <NavBar/>
                     <div className="bg-theme-darkest text-gray-100 flex-auto">
                         {children}

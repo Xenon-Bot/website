@@ -25,7 +25,7 @@ module.exports = {
             },
             {
                 source: '/invite',
-                destination: 'https://discord.com/api/oauth2/authorize?client_id=416358583220043796&permissions=8&redirect_uri=https%3A%2F%2Fxenon.bot%2Finvited&scope=bot%20applications.commands&response_type=code',
+                destination: `${process.env.API_URL_EXTERNAL}/v1/auth/invite`,
                 permanent: false,
             },
             {
@@ -52,6 +52,11 @@ module.exports = {
                 source: '/medium',
                 destination: 'https://blog.xenon.bot',
                 permanent: false
+            },
+            {
+                source: '/ads.txt',
+                destination: 'https://api.nitropay.com/v1/ads-593.txt',
+                permanent: true
             }
         ]
     }

@@ -47,7 +47,7 @@ export default function NitroAd({name, refreshLimit = 10, refreshTime = 90, size
         const scriptTag = document.createElement('script')
         scriptTag.innerHTML = script
         document.body.appendChild(scriptTag)
-    }, [])
+    }, [script])
 
     return <div id={adId}/>
 }

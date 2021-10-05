@@ -23,6 +23,9 @@ class MyDocument extends Document {
                             data-cf-beacon='{"token": "2332cbd67f8c4cea84302d71b7fc95c4"}'/>
                 </Head>
                 <body>
+                {/* Fix FOUC on firefox */}
+                <script>0</script>
+
                 <Main/>
                 <NextScript/>
                 </body>

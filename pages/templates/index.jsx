@@ -81,13 +81,18 @@ export default function Templates({data}) {
         <div>
             <Head>
                 <title>Templates | Xenon Bot</title>
+                <meta name="description" key="description"
+                      content="Choose from hundreds of different discord templates and find the right one for your new server."/>
+                <meta property="og:title" content="Discord Templates" key="og_title"/>
+                <meta property="og:description" key="og_description"
+                      content="Choose from hundreds of different discord templates and find the right one for your new server."/>
             </Head>
             <div className="bg-theme-darker px-3 md:px-5 py-10 grid justify-items-center">
                 <div className="max-w-2xl text-center">
                     <h2 className="text-5xl font-bold mb-2">{t('title')}</h2>
-                    <div className="font-thin text-lg text-gray-300 mb-10 px-3">
+                    <h3 className="font-thin text-lg text-gray-300 mb-10 px-3">
                         <Markdown>{t('subTitle')}</Markdown>
-                    </div>
+                    </h3>
                     <TemplateFilters/>
                 </div>
             </div>

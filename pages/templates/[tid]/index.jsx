@@ -94,11 +94,6 @@ export default function Template({template}) {
                 <meta property="og:description" key="og_description" content={template.description}/>
                 <meta property="twitter:title" key="tw_title" content={template.name}/>
                 <meta property="twitter:description" key="tw_description" content={template.description}/>
-                <meta property="og:image" key="og_image"
-                      content={`https://templates.xenon.bot/api/templates/${template.id}/preview?usage_count=${template.usage_count}`}/>
-                <meta property="twitter:image:src" key="tw_image"
-                      content={`https://templates.xenon.bot/api/templates/${template.id}/preview?usage_count=${template.usage_count}`}/>
-                <meta property="twitter:card" key="tw_card" content="summary_large_image"/>
             </Head>
             <div className="grid justify-items-center px-3 md:px-5 my-10">
                 <div className="w-full xl:w-304">

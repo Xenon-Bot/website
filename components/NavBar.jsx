@@ -42,7 +42,7 @@ export default function NavBar() {
                     <div className="flex flex-initial items-center mr-7">
                         <Link href="/" passHref>
                             <a>
-                                <img src="/logo-small.png" alt="Xenon Logo" className="rounded-full w-16"/>
+                                <img src="/logo-small.png" alt="Xenon Logo" className="rounded-full w-16 h-16"/>
                             </a>
                         </Link>
                     </div>
