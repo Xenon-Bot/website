@@ -5,7 +5,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faChevronDown, faVolumeUp} from "@fortawesome/free-solid-svg-icons";
 import React from "react";
 
-function makeChannelList(channels) {
+export function makeChannelList(channels) {
     const result = []
 
     const ChannelTypes = {
@@ -46,7 +46,7 @@ function makeChannelList(channels) {
     return result
 }
 
-function makeRoleList(roles) {
+export function makeRoleList(roles) {
     const result = []
     for (let role of roles.slice(1).reverse()) {
         let color
@@ -69,7 +69,7 @@ function makeRoleList(roles) {
 
 export default function TemplatePreview({id}) {
     const {data, error} = useApi({
-        path: `/templates/${id}/structure`,
+        path: `/templates/${id}/data`,
         requiresToken: false,
         depends: [id]
     })

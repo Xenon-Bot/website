@@ -1,5 +1,5 @@
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faChevronDown, faCropAlt, faSignOutAlt, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faChevronDown, faCropAlt, faSignOutAlt, faUser, faSlidersH} from "@fortawesome/free-solid-svg-icons";
 import {userAvatar} from "../util";
 import {useState} from 'react'
 import Link from "next/link";
@@ -21,6 +21,12 @@ export default function UserDropdown({user, above = true}) {
                     <a className="flex items-center px-4 pt-2 pb-1 rounded-t-md hover:bg-theme-dark">
                         <FontAwesomeIcon icon={faUser} className="mr-2 text-gray-400"/>
                         <div className="text-lg whitespace-nowrap">{t('profile')}</div>
+                    </a>
+                </Link>
+                <Link href="/dashboard" passHref>
+                    <a className="flex items-center px-4 py-2 rounded-t-md hover:bg-theme-dark">
+                        <FontAwesomeIcon icon={faSlidersH} className="mr-2 text-gray-400"/>
+                        <div className="text-lg whitespace-nowrap">{t('dashboard')}</div>
                     </a>
                 </Link>
                 <Link href="/templates/add" passHref>

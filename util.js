@@ -20,3 +20,8 @@ export function hasBitFlag(value, bit) {
     const shifted = 1 << bit;
     return (value & shifted) === shifted
 }
+
+export function formatTimestamp(timestamp) {
+    const date = new Date(timestamp * 1000)
+    return `${date.toLocaleDateString()} ${date.toLocaleTimeString()}`
+}

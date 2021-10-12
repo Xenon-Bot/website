@@ -29,6 +29,11 @@ module.exports = {
                 permanent: false,
             },
             {
+                source: '/premium/invite',
+                destination: `${process.env.API_URL_EXTERNAL}/v1/auth/invite`,
+                permanent: false,
+            },
+            {
                 source: '/patreon',
                 destination: 'https://www.patreon.com/merlinfuchs',
                 permanent: false

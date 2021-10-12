@@ -84,6 +84,23 @@ export default function Template({template}) {
         }
     }
 
+    function handleCopyCommand() {
+        const text = `/template load name_or_id: ${template.id}`;
+        const textarea = document.createElement("textarea");
+        textarea.value = text;
+        textarea.className = "fixed top-0 left-0";
+        document.body.appendChild(textarea);
+
+        textarea.focus();
+        textarea.select();
+        textarea.setSelectionRange(0, 99999);
+
+        document.execCommand('copy');
+        document.body.removeChild(textarea);
+
+        toast.success('The command has been copied to your clipboard!')
+    }
+
     // <meta property="twitter:url" key="twitter_url" content={``}/>
     return (
         <div>
@@ -94,6 +111,7 @@ export default function Template({template}) {
                 <meta property="og:description" key="og_description" content={template.description}/>
                 <meta property="twitter:title" key="tw_title" content={template.name}/>
                 <meta property="twitter:description" key="tw_description" content={template.description}/>
+                <meta property="og:image" content="" key="og_image"/>
             </Head>
             <div className="grid justify-items-center px-3 md:px-5 my-10">
                 <div className="w-full xl:w-304">
@@ -121,7 +139,7 @@ export default function Template({template}) {
                         </div>
                         <div className="flex flex-wrap text-gray-300 mb-10">
                             {template.tags.map(tag => (
-                                <Link passHref key={tag} href={`/templates/search?tags=${tag}`}>
+                                <Link passHref key={tag} href={`/templates/search?t=${tag}`}>
                                     <a className="bg-theme-dark px-2 py-1 rounded-md mr-2 mb-2"
                                        data-google-interstitial="false">{tag}</a>
                                 </Link>
@@ -132,6 +150,7 @@ export default function Template({template}) {
                             <div className="w-full md:w-176 ">
                                 <div className="flex flex-wrap sm:flex-nowrap text-xl">
                                     <button
+                                        onClick={handleCopyCommand}
                                         className="text-left bg-theme-dark pl-5 pr-3 py-4 rounded-t-md sm:rounded-t-none sm:rounded-l-md flex-auto"
                                         id="copy">
                                 <span className="text-gray-500 mr-3">
@@ -142,7 +161,7 @@ export default function Template({template}) {
                                     </button>
                                     <a href="/invite"
                                        data-google-interstitial="false"
-                                       className="bg-theme-light px-4 py-4 rounded-b-md sm:rounded-b-none sm:rounded-r-md flex-auto sm:flex-initial hover:bg-gray-lighter text-center"
+                                       className="bg-theme-light px-4 py-4 rounded-b-md sm:rounded-l-none sm:rounded-r-md flex-auto sm:flex-initial hover:bg-gray-lighter text-center"
                                        target="_blank">
                                         Invite Bot
                                     </a>

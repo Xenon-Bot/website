@@ -1,22 +1,22 @@
 import {createContext, useContext, useState, useEffect} from 'react'
 import useApi from "../hooks/api";
 
-const Context = createContext([null, null])
+const Context = createContext(false)
 
-export const GuildsProvider = ({children}) => {
-    const {data: guilds, error} = useApi({
-        path: '/guilds',
+export const TierProvider = ({children}) => {
+    const {data: tier, error} = useApi({
+        path: '/users/@me/tier',
         requiresToken: true,
         redirectUnauthorized: false
     })
 
     return (
-        <Context.Provider value={guilds}>
+        <Context.Provider value={tier}>
             {children}
         </Context.Provider>
     )
 }
 
-export function useGuilds() {
+export function useTier() {
     return useContext(Context)
 }

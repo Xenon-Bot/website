@@ -39,6 +39,9 @@ module.exports = {
                 '256': '64rem',
                 '304': '76rem'
             },
+            maxWidth: {
+                '64': '16rem'
+            },
             scale: {
                 '102': '1.02'
             }

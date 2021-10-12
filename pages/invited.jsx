@@ -5,6 +5,7 @@ import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes, faSpinner, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {guildIcon} from "../util";
+import ErrorBoundary from "../components/ErrorBoundary";
 
 export async function getStaticProps({locale}) {
     return {
@@ -18,12 +19,14 @@ export default function Invited() {
     // const {t} = useTranslation(['common'])
 
     const router = useRouter()
-    const code = router.query.code
 
     const [result, setResult] = useState([null, false])
     const [data, error] = result
 
     useEffect(() => {
+        if (!router.isReady) return
+
+        const code = router.query.code
         if (!code) {
             setResult([null, true])
             return
@@ -41,7 +44,7 @@ export default function Invited() {
                     setResult([await resp.json(), false])
                 }
             })
-    }, [code])
+    }, [router])
 
     return (
         <div className="grid justify-items-center px-3 md:px-5 my-10">
@@ -105,12 +108,14 @@ export default function Invited() {
                         </div>
                     )}
                 </div>
-                <div className="bg-theme-darker p-5 rounded-md">
-                    <iframe src="https://www.youtube.com/embed/Z0JSyOLuCD4" className="w-full h-48 sm:h-80"
-                            title="YouTube video player" frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen/>
-                </div>
+                <ErrorBoundary fallback={<div/>}>
+                    <div className="bg-theme-darker p-5 rounded-md">
+                        <iframe src="https://www.youtube.com/embed/Z0JSyOLuCD4" className="w-full h-48 sm:h-80"
+                                title="YouTube video player" frameBorder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowFullScreen/>
+                    </div>
+                </ErrorBoundary>
             </div>
         </div>
     )

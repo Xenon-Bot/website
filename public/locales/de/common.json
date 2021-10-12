@@ -13,5 +13,6 @@
   "addTemplate": "Template Hinzufügen",
   "logout": "Ausloggen",
   "login": "Einloggen",
-  "cancel": "Abbrechen"
+  "cancel": "Abbrechen",
+  "dashboard": "Dashboard"
 }

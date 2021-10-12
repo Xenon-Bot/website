@@ -39,6 +39,7 @@ export default function TemplateSearch() {
     useEffect(() => {
         if (!router.isReady) return
 
+        setData(null)
         apiRequest({
             path: `/templates?limit=${PER_PAGE}&skip=${(page - 1) * PER_PAGE}&search=${search}&tags=${tags}&language=${language}&order=${order}`,
         })

@@ -13,8 +13,6 @@ const availableTags = [
     'meme'
 ]
 
-let loadedQuery = false
-
 export default function TemplateFilters({showSort = false}) {
     const router = useRouter()
     const {t} = useTranslation('templates')
@@ -25,8 +23,9 @@ export default function TemplateFilters({showSort = false}) {
     const [order, setOrder] = useState('popular')
 
     useEffect(() => {
-        if (!loadedQuery && router.isReady) {
-            if (router.query['t']) {
+        if (!router.isReady) return
+
+        if (router.query['t']) {
                 setTags(router.query['t'].split(','))
             }
 
@@ -41,9 +40,6 @@ export default function TemplateFilters({showSort = false}) {
             if (router.query['o']) {
                 setOrder(router.query['o'])
             }
-
-            loadedQuery = true
-        }
     }, [router])
 
     function pushRoute(newSearch, newTags, newLanguage, newOrder) {
