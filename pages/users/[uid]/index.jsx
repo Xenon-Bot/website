@@ -1,13 +1,14 @@
 import {apiRequest} from "../../../api";
 import {userAvatar, hasBitFlag} from "../../../util";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faTools, faCropAlt, faStar} from "@fortawesome/free-solid-svg-icons";
+import {faTools, faCropAlt, faStar, faDove} from "@fortawesome/free-solid-svg-icons";
 import useApi from "../../../hooks/api";
 import TemplateCard from "../../../components/templates/TemplateCard";
 import ReactLoading from "react-loading";
 import Head from "next/head";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
 import {useTranslation} from "next-i18next";
+import Tooltip from "../../../components/Tooltip";
 
 export async function getServerSideProps({params, res, locale}) {
     res.setHeader(
@@ -61,38 +62,25 @@ export default function User({user}) {
                         </div>
                         <div className="text-xl flex flex-wrap justify-center items-center">
                             {hasBitFlag(user.internal_flags, 0) ?
-                                <div
-                                    className="flex cursor-pointer transition-all items-center group hover:bg-green-400 mr-3 rounded-md px-1 hover:px-2">
+                                <Tooltip title="Template Creator">
                                     <FontAwesomeIcon icon={faCropAlt}
-                                                     className="text-green-400 group-hover:text-gray-100 my-1"
-                                                     title="Template Creator"/>
-                                    <div
-                                        className="transition-all w-auto max-w-0 group-hover:max-w-sm text-gray-100 group-hover:block group-hover:pl-2 whitespace-nowrap truncate">Template
-                                        Creator
-                                    </div>
-                                </div> : ''}
-                            {hasBitFlag(user.internal_flags, 1) ?
-                                <div
-                                    className="flex cursor-pointer transition-all items-center group hover:bg-yellow-400 mr-3 rounded-md px-1 hover:px-2">
+                                                     className="text-green-400 my-1 mr-3"/>
+                                </Tooltip> : ''}
+                            {user.tier ?
+                                <Tooltip title="Premium">
                                     <FontAwesomeIcon icon={faStar}
-                                                     className="text-yellow-400 group-hover:text-gray-100 my-1"
-                                                     title="Premium"/>
-                                    <div
-                                        className="transition-all w-auto max-w-0 group-hover:max-w-sm text-gray-100 group-hover:block group-hover:pl-2 whitespace-nowrap truncate">
-                                        Premium
-                                    </div>
-                                </div> : ''}
+                                                     className="text-yellow-400 my-1 mr-3"/>
+                                </Tooltip> : ''}
+                            {hasBitFlag(user.internal_flags, 3) ?
+                                <Tooltip title="Early Bird">
+                                    <FontAwesomeIcon icon={faDove}
+                                                     className="text-red-400 my-1 mr-3"/>
+                                </Tooltip> : ''}
                             {hasBitFlag(user.internal_flags, 2) ?
-                                <div
-                                    className="flex cursor-pointer transition-all items-center group hover:bg-blue-400 mr-3 rounded-md px-1 hover:px-2">
+                                <Tooltip title="Staff">
                                     <FontAwesomeIcon icon={faTools}
-                                                     className="text-blue-400 group-hover:text-gray-100 my-1"
-                                                     title="Staff"/>
-                                    <div
-                                        className="transition-all w-auto max-w-0 group-hover:max-w-sm text-gray-100 group-hover:block group-hover:pl-2 whitespace-nowrap truncate">
-                                        Staff
-                                    </div>
-                                </div> : ''}
+                                                     className="text-blue-400 my-1 mr-3"/>
+                                </Tooltip> : ''}
                         </div>
                     </div>
                 </div>
