@@ -6,6 +6,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes, faSpinner, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {guildIcon} from "../util";
 import ErrorBoundary from "../components/ErrorBoundary";
+import YouTube from "react-youtube";
+import youTubeStyles from '../styles/YouTube.module.css'
 
 export async function getStaticProps({locale}) {
     return {
@@ -110,10 +112,7 @@ export default function Invited() {
                 </div>
                 <ErrorBoundary fallback={<div/>}>
                     <div className="bg-theme-darker p-5 rounded-md">
-                        <iframe src="https://www.youtube.com/embed/Z0JSyOLuCD4" className="w-full h-48 sm:h-80"
-                                title="YouTube video player" frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowFullScreen/>
+                        <YouTube videoId="Z0JSyOLuCD4" containerClassName={youTubeStyles.container}/>
                     </div>
                 </ErrorBoundary>
             </div>
