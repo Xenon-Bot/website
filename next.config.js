@@ -62,6 +62,11 @@ module.exports = {
                 source: '/ads.txt',
                 destination: 'https://api.nitropay.com/v1/ads-593.txt',
                 permanent: true
+            },
+            {
+                source: '/privacy',
+                destination: 'https://www.iubenda.com/privacy-policy/88601334/legal',
+                permanent: false
             }
         ]
     }
