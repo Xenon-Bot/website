@@ -6,8 +6,8 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes, faSpinner, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {guildIcon} from "../util";
 import ErrorBoundary from "../components/ErrorBoundary";
-import YouTube from "react-youtube";
-import youTubeStyles from '../styles/YouTube.module.css'
+// import YouTube from "react-youtube";
+// import youTubeStyles from '../styles/YouTube.module.css'
 
 export async function getStaticProps({locale}) {
     return {
@@ -112,7 +112,10 @@ export default function Invited() {
                 </div>
                 <ErrorBoundary fallback={<div/>}>
                     <div className="bg-theme-darker p-5 rounded-md">
-                        <YouTube videoId="Z0JSyOLuCD4" containerClassName={youTubeStyles.container}/>
+                        <a href="https://www.youtube.com/watch?v=Z0JSyOLuCD4" target="_blank" rel="noreferrer">
+                            <img src="/tutorial-thumbnail.png" alt="tutorial" className="w-full filter hover:brightness-90 transition-all"/>
+                        </a>
+                        {/* <YouTube videoId="Z0JSyOLuCD4" containerClassName={youTubeStyles.container}/> */}
                     </div>
                 </ErrorBoundary>
             </div>

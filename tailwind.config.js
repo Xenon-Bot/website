@@ -52,7 +52,8 @@ module.exports = {
             display: ['group-hover'],
             width: ['group-hover'],
             padding: ['group-hover', 'hover'],
-            maxWidth: ['group-hover']
+            maxWidth: ['group-hover'],
+            brightness: ['hover']
         },
     },
     plugins: [],
