@@ -54,7 +54,12 @@ export default function AdvancedLoadOptionsForm({formId, form}) {
     }
 
     async function handleSave() {
-        const resp = await apiRequest({method: "PUT", path: `/forms/${formId}`})
+        const resp = await apiRequest({
+            method: "PUT", path: `/forms/${formId}`, data: {
+                exclude_delete_ids: excludeDelete,
+                exclude_load_ids: excludeLoad
+            }
+        })
         if (resp.ok) {
             toast.success("Changes have been saved! You can now continue in Discord.")
         } else if (resp.status === 404) {
@@ -69,7 +74,9 @@ export default function AdvancedLoadOptionsForm({formId, form}) {
             <div className="w-full xl:w-256">
                 <div className="mb-4">
                     <div className="text-3xl mb-1">Advanced Loading Options</div>
-                    <div className="text-gray-300">You are editing advanced loading options. This page is only valid for up to 10 minutes.</div>
+                    <div className="text-gray-300">You are editing advanced loading options. This page is only valid for
+                        up to 10 minutes.
+                    </div>
                 </div>
                 <div className="bg-theme-darker rounded-lg py-3 px-2 px-4 mb-3">
                     <div className="text-xl mb-3 text-gray-200">Delete the following:</div>
