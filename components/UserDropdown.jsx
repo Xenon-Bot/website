@@ -23,12 +23,6 @@ export default function UserDropdown({user, above = true}) {
                         <div className="text-lg whitespace-nowrap">{t('profile')}</div>
                     </a>
                 </Link>
-                <Link href="/dashboard" passHref>
-                    <a className="flex items-center px-4 py-2 rounded-t-md hover:bg-theme-dark">
-                        <FontAwesomeIcon icon={faSlidersH} className="mr-2 text-gray-400"/>
-                        <div className="text-lg whitespace-nowrap">{t('dashboard')}</div>
-                    </a>
-                </Link>
                 <Link href="/templates/add" passHref>
                     <a className="flex items-center px-4 py-2 rounded-t-md hover:bg-theme-dark">
                         <FontAwesomeIcon icon={faCropAlt} className="mr-2 text-gray-400"/>

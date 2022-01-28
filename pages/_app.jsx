@@ -18,12 +18,12 @@ function MyApp({Component, pageProps}) {
     return (
         <div>
             <Head>
-                <title>Xenon Bot</title>
+                <title>Xenon Bot - Discord Backups and Templates</title>
                 <meta name="description"
                       content="Backup, archive, copy, clone or synchronize your discord server and take advantage of hundreds of free templates."
                       key="description"/>
                 <meta name="theme-color" content="#60a5fa" key="color"/>
-                <meta property="og:title" content="Xenon Bot" key="og_title"/>
+                <meta property="og:title" content="Xenon Bot - Discord Backups and Templates" key="og_title"/>
                 <meta property="og:description" key="og_description"
                       content="Use Xenon Bot to Backup, archive, copy, clone or synchronize your discord server and take advantage of hundreds of free templates."/>
                 <meta property="og:image" content="https://xenon.bot/logo-big.png" key="og_image"/>

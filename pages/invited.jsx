@@ -2,12 +2,12 @@ import {useRouter} from "next/router";
 import {useEffect, useState} from 'react'
 import apiRequest from "../api";
 import {serverSideTranslations} from "next-i18next/serverSideTranslations";
+import {useTranslation} from "next-i18next";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faTimes, faSpinner, faCheck} from "@fortawesome/free-solid-svg-icons";
 import {guildIcon} from "../util";
 import ErrorBoundary from "../components/ErrorBoundary";
-// import YouTube from "react-youtube";
-// import youTubeStyles from '../styles/YouTube.module.css'
+import Link from "next/link";
 
 export async function getStaticProps({locale}) {
     return {
@@ -18,7 +18,7 @@ export async function getStaticProps({locale}) {
 }
 
 export default function Invited() {
-    // const {t} = useTranslation(['common'])
+    const {t} = useTranslation(['common'])
 
     const router = useRouter()
 
@@ -51,7 +51,7 @@ export default function Invited() {
     return (
         <div className="grid justify-items-center px-3 md:px-5 my-10">
             <div className="w-full md:w-160">
-                <div className="bg-theme-darker py-8 px-5 rounded-md mb-5 text-center">
+                <div className="bg-theme-darker py-8 px-5 rounded-t-md text-center">
                     <div className="text-5xl mb-16">
                         {error ? (
                             'Something went wrong ...'
@@ -74,7 +74,7 @@ export default function Invited() {
                                 </div>
                             ) : data ? (
                                 data.guild && data.guild.icon ? (
-                                    <img src={guildIcon(data.guild)} alt="Xenon"
+                                    <img src={guildIcon(data.guild, {size: 512})} alt="Xenon"
                                          className="rounded-full w-20 h-20 sm:w-32 sm:h-32"/>
                                 ) : (
                                     <div
@@ -110,12 +110,19 @@ export default function Invited() {
                         </div>
                     )}
                 </div>
+                <div className="flex mb-5">
+                    <Link href="/premium" passHref>
+                        <a className="text-center w-full bg-yellow-400 hover:bg-yellow-300 inline-block px-3 py-2 rounded-b-md text-black text-xl">
+                            {t('common:getPremium')}
+                        </a>
+                    </Link>
+                </div>
                 <ErrorBoundary fallback={<div/>}>
                     <div className="bg-theme-darker p-5 rounded-md">
                         <a href="https://www.youtube.com/watch?v=Z0JSyOLuCD4" target="_blank" rel="noreferrer">
-                            <img src="/tutorial-thumbnail.png" alt="tutorial" className="w-full filter hover:brightness-90 transition-all"/>
+                            <img src="/tutorial-thumbnail.png" alt="tutorial"
+                                 className="w-full filter hover:brightness-90 transition-all"/>
                         </a>
-                        {/* <YouTube videoId="Z0JSyOLuCD4" containerClassName={youTubeStyles.container}/> */}
                     </div>
                 </ErrorBoundary>
             </div>

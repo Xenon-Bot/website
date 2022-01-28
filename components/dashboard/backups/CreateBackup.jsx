@@ -4,6 +4,7 @@ import {useEffect, useState} from 'react'
 import apiRequest from "../../../api";
 import {useToken} from "../../../context/token";
 import {toast} from "react-toastify";
+import CustomSelect from "../../CustomSelect";
 
 export default function CreateBackup({newBackup}) {
     const [selectedGuild] = useSelectedGuild()
@@ -11,12 +12,19 @@ export default function CreateBackup({newBackup}) {
     const tier = useTier()
 
     const [options, setOptions] = useState([])
+    const [availableOptions, setAvailableOptions] = useState([])
     const [messageCount, setMessageCount] = useState(0)
 
     useEffect(() => {
         if (!tier) return
         setMessageCount(tier.info.max_backup_messages)
-        setOptions(tier.info.allowed_backup_create_options)
+        setAvailableOptions(tier.info.allowed_backup_create_options.map(o => {
+            return {
+                label: o,
+                value: o
+            }
+        }))
+        setOptions(availableOptions)
     }, [tier])
 
     function handleCreate() {
@@ -25,7 +33,7 @@ export default function CreateBackup({newBackup}) {
             path: '/backups',
             data: {
                 guild_id: selectedGuild.id,
-                options: options,
+                options: options.map(o => o.value),
                 message_count: messageCount
             },
             token
@@ -48,9 +56,7 @@ export default function CreateBackup({newBackup}) {
                 <div>
                     <div className="text-lg">Options</div>
                     <div className="font-thin text-gray-300 mb-3">Select what the bot will save</div>
-                    <select multiple className="w-full rounded-md bg-theme-light px-3 py-2" value={options} onChange={() => {}}>
-                        <option value="channels">Channels</option>
-                    </select>
+                    <CustomSelect options={availableOptions} isMulti={true} onChange={options => setOptions(options)} value={options}/>
                 </div>
                 <div>
                     <div className="text-lg">Message Count</div>

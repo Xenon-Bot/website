@@ -62,9 +62,7 @@ export default function Footer() {
                             </Link>
                         </div>
                         <div className="mb-2">
-                            <Link href="/privacy" passHref>
-                                <a className="text-gray-400 hover:text-blue-300">Privacy Policy</a>
-                            </Link>
+                            <a href="/privacy" className="text-gray-400 hover:text-blue-300">Privacy Policy</a>
                         </div>
                         <div className="mb-2">
                             <Link href="/contact" passHref>

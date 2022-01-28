@@ -18,15 +18,12 @@ export function makeChannelList(channels) {
         GUILD_STORE: 6
     };
 
-    for (let channel of channels) {
-        if (channel.type === ChannelTypes.GUILD_CATEGORY) {
-            result.push(
-                <div className="uppercase font-bold pb-2 pt-4 flex items-center" key={channel.id}>
-                    <FontAwesomeIcon icon={faChevronDown} className="mr-2"/>
-                    <div>{channel.name}</div>
-                </div>
-            )
-        } else if (channel.type === ChannelTypes.GUILD_VOICE) {
+    const noParent = channels
+        .filter(c => !c.parent_id && c.type !== ChannelTypes.GUILD_CATEGORY)
+        .sort((a, b) => a.type > b.type ? 1 : a.type < b.type ? -1 : a.position > b.position)
+
+    for (let channel of noParent) {
+        if (channel.type === ChannelTypes.GUILD_VOICE) {
             result.push(
                 <div className="pl-5 flex items-center" key={channel.id}>
                     <FontAwesomeIcon icon={faVolumeUp} className="mr-2"/>
@@ -40,6 +37,41 @@ export function makeChannelList(channels) {
                     <div className="align-middle name">{channel.name}</div>
                 </div>
             )
+        }
+    }
+
+    const categories = channels
+        .filter(c => c.type === ChannelTypes.GUILD_CATEGORY)
+        .sort((a, b) => a.type > b.type)
+
+    for (let channel of categories) {
+        result.push(
+            <div className="uppercase font-bold pb-2 pt-4 flex items-center" key={channel.id}>
+                <FontAwesomeIcon icon={faChevronDown} className="mr-2"/>
+                <div>{channel.name}</div>
+            </div>
+        )
+
+        const children = channels
+            .filter(c => c.parent_id && c.parent_id === channel.id)
+            .sort((a, b) => a.type > b.type ? 1 : a.type < b.type ? -1 : a.position > b.position)
+
+        for (let child of children) {
+            if (child.type === ChannelTypes.GUILD_VOICE) {
+                result.push(
+                    <div className="pl-5 flex items-center" key={child.id}>
+                        <FontAwesomeIcon icon={faVolumeUp} className="mr-2"/>
+                        <div>{child.name}</div>
+                    </div>
+                )
+            } else {
+                result.push(
+                    <div className="pl-5 flex items-center" key={child.id}>
+                        <div className="text-lg mr-2">#</div>
+                        <div className="align-middle name">{child.name}</div>
+                    </div>
+                )
+            }
         }
     }
 
@@ -57,7 +89,8 @@ export function makeRoleList(roles) {
         }
 
         result.push(
-            <div className="flex items-center flex-initial border-2 rounded-full m-1" style={{'borderColor': color, 'padding': '2px 10px'}} key={role.id}>
+            <div className="flex items-center flex-initial border-2 rounded-full m-1"
+                 style={{'borderColor': color, 'padding': '2px 10px'}} key={role.id}>
                 <div style={{'backgroundColor': color}} className="w-4 h-4 rounded-full mr-2"/>
                 <div>{role.name}</div>
             </div>
